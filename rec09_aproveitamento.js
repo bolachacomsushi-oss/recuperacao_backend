@@ -1,27 +1,29 @@
 const entrada = require("readline-sync");
 
+console.log("=== Calculo de aproveitamento ===")
+
 function calcularAproveitamento(util, total) {
     return (util / total) * 100;
 }
 
-function classificarEficiencia(percentual) {
+function classificarAproveitamento(percentual) {
     if (percentual >= 90) {
         return "META ATINGIDA";
-    } else if (percentual >= 70) {
-        return "ATENÇÃO";
+    } else if (percentual = 75 & percentual <= 89.99) {
+        return "ADEQUADO";
     } else {
-        return "ABAIXO DA META";
+        return "REVISAR PROCESSO";
     }
 }
 
-const producaoPrevista = entrada.questionFloat("Produção prevista: ");
-const producaoReal = entrada.questionFloat("Produção real: ");
+const quantTotal = entrada.questionFloat("Quantidade total: ");
+const quantUtil = entrada.questionFloat("Quantidade Util: ");
 
-const eficiencia = calcularEficiencia(producaoReal, producaoPrevista);
-const classificacao = classificarEficiencia(eficiencia);
+const aproveitamento = calcularAproveitamento(quantUtil, quantTotal);
+const classiApro = classificarAproveitamento();
 
 console.log("\n=== RELATÓRIO DE EFICIÊNCIA ===");
-console.log(`Produção prevista: ${producaoPrevista}`);
-console.log(`Produção real: ${producaoReal}`);
-console.log(`Eficiência: ${eficiencia.toFixed(2)}%`);
-console.log(`Classificação: ${classificacao}`);
+console.log(`Total: ${quantTotal}`);
+console.log(`Util: ${quantUtil}`);
+console.log(`Percentual: ${aproveitamento}%`);
+console.log(`Classificação: ${classiApro}`);
